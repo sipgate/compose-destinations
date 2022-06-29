@@ -10,8 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.destinations.sample.TaskNavGraph
 import com.ramcosta.destinations.sample.core.viewmodel.viewModel
 
+@TaskNavGraph
 @Destination(navArgsDelegate = StepScreenNavArgs::class)
 @Composable
 fun StepScreen(

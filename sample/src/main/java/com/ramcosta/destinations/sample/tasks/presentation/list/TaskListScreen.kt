@@ -14,11 +14,13 @@ import androidx.compose.ui.graphics.Color
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.destinations.sample.MainNavGraph
+import com.ramcosta.destinations.sample.TaskNavGraph
 import com.ramcosta.destinations.sample.core.viewmodel.viewModel
 import com.ramcosta.destinations.sample.destinations.AddTaskDialogDestination
 import com.ramcosta.destinations.sample.destinations.TaskScreenDestination
 
-@RootNavGraph(start = true)
+@TaskNavGraph(start = true)
 @Destination
 @Composable
 fun TaskListScreen(

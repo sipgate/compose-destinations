@@ -4,8 +4,10 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.destinations.sample.MainNavGraph
 import com.ramcosta.destinations.sample.core.viewmodel.viewModel
 
+@MainNavGraph
 @Destination
 @Composable
 fun AccountScreen(

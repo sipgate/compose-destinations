@@ -27,7 +27,7 @@ fun SampleApp() {
 
     val vm = activityViewModel<MainViewModel>()
     // 👇 this avoids a jump in the UI that would happen if we relied only on ShowLoginWhenLoggedOut
-    val startRoute = if (!vm.isLoggedIn) LoginScreenDestination else NavGraphs.root.startRoute
+    val startRoute = if (!vm.isLoggedIn) LoginScreenDestination else NavGraphs.main.startRoute
 
     SampleScaffold(
         navController = navController,
@@ -38,7 +38,7 @@ fun SampleApp() {
         DestinationsNavHost(
             engine = engine,
             navController = navController,
-            navGraph = NavGraphs.root,
+            navGraph = NavGraphs.main,
             modifier = Modifier.padding(it),
             startRoute = startRoute
         )
