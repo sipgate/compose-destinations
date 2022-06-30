@@ -17,9 +17,9 @@ import com.ramcosta.composedestinations.navigation.navigate
 import com.ramcosta.composedestinations.navigation.popBackStack
 import com.ramcosta.composedestinations.navigation.popUpTo
 import com.ramcosta.composedestinations.utils.isRouteOnBackStack
+import com.ramcosta.destinations.sample.NavGraph
 import com.ramcosta.destinations.sample.NavGraphs
 import com.ramcosta.destinations.sample.R
-import com.ramcosta.destinations.sample.destinations.*
 
 @Composable
 fun BottomBar(
@@ -27,18 +27,18 @@ fun BottomBar(
 ) {
     BottomNavigation {
         BottomBarItem.values().forEach { destination ->
-            val isCurrentDestOnBackStack = navController.isRouteOnBackStack(destination.direction)
+            val isCurrentDestOnBackStack = navController.isRouteOnBackStack(destination.graph)
             BottomNavigationItem(
                 selected = isCurrentDestOnBackStack,
                 onClick = {
                     if (isCurrentDestOnBackStack) {
                         // When we click again on a bottom bar item and it was already selected
                         // we want to pop the back stack until the initial destination of this bottom bar item
-                        navController.popBackStack(destination.direction, false)
+                        navController.popBackStack(destination.graph, false)
                         return@BottomNavigationItem
                     }
 
-                    navController.navigate(destination.direction) {
+                    navController.navigate(destination.graph) {
                         // Pop up to the root of the graph to
                         // avoid building up a large stack of destinations
                         // on the back stack as users select items
@@ -66,11 +66,11 @@ fun BottomBar(
 }
 
 enum class BottomBarItem(
-    val direction: DirectionDestination,
+    val graph: NavGraph,
     val icon: ImageVector,
     @StringRes val label: Int
 ) {
-    TaskList(TaskListScreenDestination, Icons.Default.List, R.string.task_list_screen),
-    Account(AccountScreenDestination, Icons.Default.Person, R.string.account_screen),
-    Settings(SettingsScreenDestination, Icons.Default.Settings, R.string.settings_screen)
+    TaskList(NavGraphs.task, Icons.Default.List, R.string.task_list_screen),
+    Account(NavGraphs.account, Icons.Default.Person, R.string.account_screen),
+    Settings(NavGraphs.settings, Icons.Default.Settings, R.string.settings_screen)
 }
